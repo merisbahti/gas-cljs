@@ -15,19 +15,23 @@
      [:ul
       (for
        [[person value] (:users @state)] ^{:key person}
-       [:li [:div [:label
-                   person
-                   [:input
-                    {:value value :onChange
-                     (fn [event]
-                       (swap! state (fn [state]   (assoc-in state [:users person] (-> event (.-target) (.-value) (int))))))}]]
-             [:p (math/round (* (:gas-cost @state) (/ value total-distance)))]]])]
+       [:li.user-line
+        [:b person]
+        [:label
+         "drove"
+         [:input
+          {:value value :onChange
+           (fn [event]
+             (swap! state (fn [state]   (assoc-in state [:users person] (-> event (.-target) (.-value) (int))))))}] "km"]
+        (let
+         [person-owes (math/round (* (:gas-cost @state) (/ value total-distance)))]
+          (when (> person-owes 0) [:div "and should pay: " [:b (str person-owes "kr")]]))])]
      [:label
       "gas cost"
       [:input
        {:value (:gas-cost @state) :onChange
         (fn [event]
-          (swap! state (fn [state]  (assoc state :gas-cost (-> event (.-target) (.-value) (int))))))}]]]))
+          (swap! state (fn [state]  (assoc state :gas-cost (-> event (.-target) (.-value) (int))))))}] "kr"]]))
 
 ;; -------------------------
 ;; Initialize app

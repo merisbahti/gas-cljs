@@ -15,6 +15,11 @@ ul {
   gap: 4px;
 }
 
+li.user-line {
+  display: flex;
+  gap: 8px;
+}
+
 h1,
 h2,
 h3 {
