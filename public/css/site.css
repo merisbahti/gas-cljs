@@ -1,0 +1,49 @@
+body {
+  font-family: monospace;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 72px;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.125em;
+  color: #333;
+  line-height: 1.5em;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+h1,
+h2,
+h3 {
+  color: #000;
+}
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+input {
+  margin-left: 8px;
+}
+ul {
+  padding-left: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #09f;
+}
+
+a:hover {
+  text-decoration: underline;
+}
