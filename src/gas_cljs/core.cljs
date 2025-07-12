@@ -24,8 +24,9 @@
            (fn [event]
              (swap! state (fn [state]   (assoc-in state [:users person] (-> event (.-target) (.-value) (int))))))}] "km"]
         (let
-         [person-owes (math/round (* (:gas-cost @state) (/ value total-distance)))]
-          (when (> person-owes 0) [:div "and should pay: " [:b (str person-owes "kr")]]))])]
+         [person-percentage (/ value total-distance)
+          person-owes (math/round (* (:gas-cost @state) person-percentage))]
+          (when (> person-owes 0) [:div "and should pay: " [:b (str person-owes "kr")] [:i (str "(" (math/round (* 100 person-percentage)) "%)")]]))])]
      [:label
       "gas cost"
       [:input
